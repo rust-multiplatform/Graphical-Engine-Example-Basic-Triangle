@@ -25,7 +25,7 @@ workflows:
 jobs:
   platform_linux:
     docker:
-      - image: cimg/rust:1.63
+      - image: cimg/rust:1.65
 
     steps:
       - checkout
@@ -252,7 +252,7 @@ jobs:
   
   platform_webassembly:
     docker:
-      - image: cimg/rust:1.63
+      - image: cimg/rust:1.65
 
     steps:
       - checkout
@@ -285,7 +285,7 @@ jobs:
 
   shared:
     docker:
-      - image: cimg/rust:1.63
+      - image: cimg/rust:1.65
 
     steps:
       - checkout
