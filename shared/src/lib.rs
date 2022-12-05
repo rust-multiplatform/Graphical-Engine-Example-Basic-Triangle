@@ -175,25 +175,27 @@ pub fn entrypoint() {
     .expect("failed to create fragment shader module");
 
     // Pipeline
-    let mut pipeline = create_pipeline(
+    let pipeline = Mutex::new(create_pipeline(
         vertex_shader.clone(),
         fragment_shader.clone(),
         surface.window().inner_size(),
         render_pass.clone(),
         graphical_engine.lock().unwrap().get_logical_device(),
-    );
+    ));
 
     // Framebuffer
-    let mut frame_buffers = graphical_engine
-        .lock()
-        .unwrap()
-        .create_frame_buffers(render_pass.clone());
+    let frame_buffers = Mutex::new(
+        graphical_engine
+            .lock()
+            .unwrap()
+            .create_frame_buffers(render_pass.clone()),
+    );
 
     // Command Buffers
     let mut command_buffers: Vec<Arc<PrimaryAutoCommandBuffer>> = create_command_buffers(
-        frame_buffers.clone(),
+        frame_buffers.lock().unwrap().clone(),
         graphical_engine.clone(),
-        pipeline.clone(),
+        pipeline.lock().unwrap().clone(),
         vertex_buffer.clone(),
     );
 
@@ -235,7 +237,10 @@ pub fn entrypoint() {
                         .unwrap()
                         .recreate_swap_chain_and_images(render_pass.clone())
                     {
-                        Some(new_frame_buffers) => frame_buffers = new_frame_buffers,
+                        Some(new_frame_buffers) => {
+                            let mut frame_buffers_lock = frame_buffers.lock().unwrap();
+                            *frame_buffers_lock = new_frame_buffers;
+                        }
                         None => {
                             // Something did go wrong while recreating the swapchain.
                             // There is no ideal way of handling this, our best bet is that this is a single occurrence.
@@ -252,18 +257,20 @@ pub fn entrypoint() {
                     if window_resized {
                         window_resized = false;
 
-                        pipeline = create_pipeline(
+                        let new_pipeline = create_pipeline(
                             vertex_shader.clone(),
                             fragment_shader.clone(),
                             surface.window().inner_size(),
                             render_pass.clone(),
                             graphical_engine.lock().unwrap().get_logical_device(),
                         );
+                        let mut pipeline_lock = pipeline.lock().unwrap();
+                        *pipeline_lock = new_pipeline;
 
                         command_buffers = create_command_buffers(
-                            frame_buffers.clone(),
+                            frame_buffers.lock().unwrap().clone(),
                             graphical_engine.clone(),
-                            pipeline.clone(),
+                            pipeline_lock.clone(),
                             vertex_buffer.clone(),
                         );
                     }
