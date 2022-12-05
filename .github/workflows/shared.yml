@@ -36,15 +36,20 @@ jobs:
         run: curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --profile minimal -y
 
       - name: Check
-        run: cargo check --verbose --package shared
+        if: ${{ matrix.os == 'windows-latest' }}
+        run: cargo check --verbose --package shared --target-dir D:/target
       - name: Build (Debug)
-        run: cargo build --verbose --package shared
+        if: ${{ matrix.os == 'windows-latest' }}
+        run: cargo build --verbose --package shared --target-dir D:/target
       - name: Build (Release)
-        run: cargo build --verbose --package shared --release
+        if: ${{ matrix.os == 'windows-latest' }}
+        run: cargo build --verbose --package shared --release --target-dir D:/target
       - name: Run Tests (Debug)
-        run: cargo test --verbose --no-default-features --no-fail-fast --package shared
+        if: ${{ matrix.os == 'windows-latest' }}
+        run: cargo test --verbose --no-default-features --no-fail-fast --package shared --target-dir D:/target
       - name: Run Tests (Release)
-        run: cargo test --verbose --no-default-features --no-fail-fast --package shared --release
+        if: ${{ matrix.os == 'windows-latest' }}
+        run: cargo test --verbose --no-default-features --no-fail-fast --package shared --release --target-dir D:/target
 
       - uses: actions/upload-artifact@v3
         with:
