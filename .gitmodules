@@ -1,3 +1,4 @@
 [submodule "shared/Graphical-Engine-Library"]
 	path = shared/Graphical-Engine-Library
 	url = https://github.com/rust-multiplatform/Graphical-Engine-Library
+	branch = main
