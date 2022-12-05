@@ -1,9 +1,9 @@
-use crate::main;
+// use crate::main;
 
-#[test]
-fn check_main_exists() {
-    main();
-}
+// #[test]
+// fn check_main_exists() {
+//     main();
+// }
 
 // Example for UI tests:
 // #[test]

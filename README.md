@@ -1,4 +1,4 @@
-# Rust Multi-Platform Base Project Template
+# Rust Multi-Platform: Graphical Project Template
 
 > ⚠️ THIS IS A TEMPLATE. ⚠️
 
@@ -9,7 +9,10 @@ This project is supported by the following platforms:
 - ✅ Platform: macOS
 - ✅ Platform: Android
 - ✅ Platform: iOS
-- ✅ Platform: WebAssembly (⚠️ Only the WASM & JS side, still needs a web-server or bundler and HTML/CSS part)
+- ❌ Platform: WebAssembly (WASM doesn't support Vulkan, but WGPU)
+
+To get any logging outputs run this with the environment variable `RUST_LOG` set to `INFO` or `DEBUG`.
+Alternatively, running this in debug mode _should_ automatically log everything in `DEBUG` mode.
 
 To use this project simply fork it (button in top right corner) into your own namespace.
 If you need some more advanced setup check out the [forking guide](FORKING.md).
@@ -27,17 +30,16 @@ For templates/examples we recommend to also dual-licensing.
 
 ## Project layout
 
-| Folder                                         | Description                                                                                                                         | GitHub Actions                                                                                                                                                                                                                      | Coverage                                                                                                                                                                                  |
-| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ./                                             | Workspace root; `Cargo.toml` contains all project folders (internal crates)                                                         |                                                                                                                                                                                                                                     |                                                                                                                                                                                           |  |
-| [platform/](platform/)                         | Platform projects root. Contains every platform this demonstration is supported on incl. instructions on how to build and use them. |                                                                                                                                                                                                                                     |                                                                                                                                                                                           |
-| [platform/android/](platform/android/)         | Contains the Android platform project and instructions on how to build this project for Android and run it.                         | [![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_android.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_android.yml)         | [![codecov](https://codecov.io/gh/rust-multiplatform/Base-Project-Template/branch/main/graph/badge.svg?token=XpGvuQVirP)](https://codecov.io/gh/rust-multiplatform/Base-Project-Template) |
-| [platform/ios/](platform/ios/)                 | Contains the iOS platform project and instructions on how to build this project for iOS and run it.                                 | [![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_ios.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_ios.yml)                 | [![codecov](https://codecov.io/gh/rust-multiplatform/Base-Project-Template/branch/main/graph/badge.svg?token=XpGvuQVirP)](https://codecov.io/gh/rust-multiplatform/Base-Project-Template) |
-| [platform/linux/](platform/linux/)             | Contains the Linux platform project and instructions on how to build this project for Linux and run it.                             | [![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_linux.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_linux.yml)             | [![codecov](https://codecov.io/gh/rust-multiplatform/Base-Project-Template/branch/main/graph/badge.svg?token=XpGvuQVirP)](https://codecov.io/gh/rust-multiplatform/Base-Project-Template) |
-| [platform/macos/](platform/macos/)             | Contains the macOS platform project and instructions on how to build this project for macOS and run it.                             | [![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_macos.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_macos.yml)             | [![codecov](https://codecov.io/gh/rust-multiplatform/Base-Project-Template/branch/main/graph/badge.svg?token=XpGvuQVirP)](https://codecov.io/gh/rust-multiplatform/Base-Project-Template) |
-| [platform/windows/](platform/windows/)         | Contains the Windows platform project and instructions on how to build this project for Windows and run it.                         | [![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_windows.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_windows.yml)         | [![codecov](https://codecov.io/gh/rust-multiplatform/Base-Project-Template/branch/main/graph/badge.svg?token=XpGvuQVirP)](https://codecov.io/gh/rust-multiplatform/Base-Project-Template) |
-| [platform/webassembly/](platform/webassembly/) | Contains the WebAssembly platform project and instructions on how to build this project for Websites and run it.                    | [![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_webassembly.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_webassembly.yml) | [![codecov](https://codecov.io/gh/rust-multiplatform/Base-Project-Template/branch/main/graph/badge.svg?token=XpGvuQVirP)](https://codecov.io/gh/rust-multiplatform/Base-Project-Template) |
-| [shared/](shared/)                             | Contains the **shared** code between **all** projects.                                                                              | [![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/shared.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/shared.yml)                             | [![codecov](https://codecov.io/gh/rust-multiplatform/Base-Project-Template/branch/main/graph/badge.svg?token=XpGvuQVirP)](https://codecov.io/gh/rust-multiplatform/Base-Project-Template) |
+| Folder                                 | Description                                                                                                                         | GitHub Actions                                                                                                                                                                                                                      | Coverage                                                                                                                                                                                          |
+| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ./                                     | Workspace root; `Cargo.toml` contains all project folders (internal crates)                                                         |                                                                                                                                                                                                                                     |                                                                                                                                                                                                   |  |
+| [platform/](platform/)                 | Platform projects root. Contains every platform this demonstration is supported on incl. instructions on how to build and use them. |                                                                                                                                                                                                                                     |                                                                                                                                                                                                   |
+| [platform/android/](platform/android/) | Contains the Android platform project and instructions on how to build this project for Android and run it.                         | [![Rust](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_android.yml/badge.svg)](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_android.yml) | [![codecov](https://codecov.io/gh/rust-multiplatform/Graphical-Engine-Template/branch/main/graph/badge.svg?token=XpGvuQVirP)](https://codecov.io/gh/rust-multiplatform/Graphical-Engine-Template) |
+| [platform/ios/](platform/ios/)         | Contains the iOS platform project and instructions on how to build this project for iOS and run it.                                 | [![Rust](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_ios.yml/badge.svg)](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_ios.yml)         | [![codecov](https://codecov.io/gh/rust-multiplatform/Graphical-Engine-Template/branch/main/graph/badge.svg?token=XpGvuQVirP)](https://codecov.io/gh/rust-multiplatform/Graphical-Engine-Template) |
+| [platform/linux/](platform/linux/)     | Contains the Linux platform project and instructions on how to build this project for Linux and run it.                             | [![Rust](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_linux.yml/badge.svg)](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_linux.yml)     | [![codecov](https://codecov.io/gh/rust-multiplatform/Graphical-Engine-Template/branch/main/graph/badge.svg?token=XpGvuQVirP)](https://codecov.io/gh/rust-multiplatform/Graphical-Engine-Template) |
+| [platform/macos/](platform/macos/)     | Contains the macOS platform project and instructions on how to build this project for macOS and run it.                             | [![Rust](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_macos.yml/badge.svg)](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_macos.yml)     | [![codecov](https://codecov.io/gh/rust-multiplatform/Graphical-Engine-Template/branch/main/graph/badge.svg?token=XpGvuQVirP)](https://codecov.io/gh/rust-multiplatform/Graphical-Engine-Template) |
+| [platform/windows/](platform/windows/) | Contains the Windows platform project and instructions on how to build this project for Windows and run it.                         | [![Rust](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_windows.yml/badge.svg)](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_windows.yml) | [![codecov](https://codecov.io/gh/rust-multiplatform/Graphical-Engine-Template/branch/main/graph/badge.svg?token=XpGvuQVirP)](https://codecov.io/gh/rust-multiplatform/Graphical-Engine-Template) |
+| [shared/](shared/)                     | Contains the **shared** code between **all** projects.                                                                              | [![Rust](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/shared.yml/badge.svg)](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/shared.yml)                     | [![codecov](https://codecov.io/gh/rust-multiplatform/Graphical-Engine-Template/branch/main/graph/badge.svg?token=XpGvuQVirP)](https://codecov.io/gh/rust-multiplatform/Graphical-Engine-Template) |
 
 > Note that some pipelines don't cover all platforms/projects, but are building a specific project like `platform_linux`.
 
@@ -74,14 +76,13 @@ However, we can build and run individual parts (`packages`) matching our host pl
 
 Host (top) vs. Target (left) compatibility matrix:
 
-|                         | Host: Windows                                                                                                                                                                                                                                                    | Host: Linux                                                                                                                                                                     | Host: macOS                                                                                                                                    |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Target: Windows**     | ✅: [Visual Studio](https://visualstudio.com/)                                                                                                                                                                                                                    | 🔀: [MinGW](https://www.mingw-w64.org/)                                                                                                                                          | 🔀: [MinGW](https://www.mingw-w64.org/)                                                                                                         |
-| **Target: Linux**       | ⚠️: [WSL](https://docs.microsoft.com/en-us/windows/wsl/) or VM or Docker                                                                                                                                                                                          | ✅: [GCC](https://gcc.gnu.org/) or [Clang](https://clang.llvm.org/)                                                                                                              | 🔀: Docker or VM                                                                                                                                |
-| **Target: macOS**       | ⚠️: [Docker-OSX (inside WSL with Docker)](https://github.com/sickcodes/Docker-OSX) or [OSX-KVM (inside WSL or VM)](https://github.com/kholia/OSX-KVM) or [macOS-VirtualBox (inside/with WSL and/or MSYS2/MinGW)](https://github.com/myspaghetti/macos-virtualbox) | ⚠️: [Docker-OSX](https://github.com/sickcodes/Docker-OSX) or [OSX-KVM](https://github.com/kholia/OSX-KVM) or [macOS-VirtualBox](https://github.com/myspaghetti/macos-virtualbox) | ✅: [XCode](https://developer.apple.com/xcode/)                                                                                                 |
-| **Target: Android**     | 🔀: [Android Studio](https://developer.android.com/studio/) or [Android CommandLine-Tools](https://developer.android.com/studio/#command-tools)                                                                                                                   | 🔀: [Android Studio](https://developer.android.com/studio/) or [Android CommandLine-Tools](https://developer.android.com/studio/#command-tools)                                  | 🔀: [Android Studio](https://developer.android.com/studio/) or [Android CommandLine-Tools](https://developer.android.com/studio/#command-tools) |
-| **Target: iOS**         | ⚠️: [Docker-OSX (inside WSL with Docker)](https://github.com/sickcodes/Docker-OSX) or [OSX-KVM (inside WSL or VM)](https://github.com/kholia/OSX-KVM) or [macOS-VirtualBox (inside/with WSL and/or MSYS2/MinGW)](https://github.com/myspaghetti/macos-virtualbox) | ⚠️: [Docker-OSX](https://github.com/sickcodes/Docker-OSX) or [OSX-KVM](https://github.com/kholia/OSX-KVM) or [macOS-VirtualBox](https://github.com/myspaghetti/macos-virtualbox) | ✅: [XCode](https://developer.apple.com/xcode/)                                                                                                 |
-| **Target: WebAssembly** | ✅: [Wasm-Pack](https://rustwasm.github.io/wasm-pack/installer/)                                                                                                                                                                                                  | ✅: [Wasm-Pack](https://rustwasm.github.io/wasm-pack/installer/)                                                                                                                 | ✅: [Wasm-Pack](https://rustwasm.github.io/wasm-pack/installer/)                                                                                |
+|                     | Host: Windows                                                                                                                                                                                                                                                    | Host: Linux                                                                                                                                                                     | Host: macOS                                                                                                                                    |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Target: Windows** | ✅: [Visual Studio](https://visualstudio.com/)                                                                                                                                                                                                                    | 🔀: [MinGW](https://www.mingw-w64.org/)                                                                                                                                          | 🔀: [MinGW](https://www.mingw-w64.org/)                                                                                                         |
+| **Target: Linux**   | ⚠️: [WSL](https://docs.microsoft.com/en-us/windows/wsl/) or VM or Docker                                                                                                                                                                                          | ✅: [GCC](https://gcc.gnu.org/) or [Clang](https://clang.llvm.org/)                                                                                                              | 🔀: Docker or VM                                                                                                                                |
+| **Target: macOS**   | ⚠️: [Docker-OSX (inside WSL with Docker)](https://github.com/sickcodes/Docker-OSX) or [OSX-KVM (inside WSL or VM)](https://github.com/kholia/OSX-KVM) or [macOS-VirtualBox (inside/with WSL and/or MSYS2/MinGW)](https://github.com/myspaghetti/macos-virtualbox) | ⚠️: [Docker-OSX](https://github.com/sickcodes/Docker-OSX) or [OSX-KVM](https://github.com/kholia/OSX-KVM) or [macOS-VirtualBox](https://github.com/myspaghetti/macos-virtualbox) | ✅: [XCode](https://developer.apple.com/xcode/)                                                                                                 |
+| **Target: Android** | 🔀: [Android Studio](https://developer.android.com/studio/) or [Android CommandLine-Tools](https://developer.android.com/studio/#command-tools)                                                                                                                   | 🔀: [Android Studio](https://developer.android.com/studio/) or [Android CommandLine-Tools](https://developer.android.com/studio/#command-tools)                                  | 🔀: [Android Studio](https://developer.android.com/studio/) or [Android CommandLine-Tools](https://developer.android.com/studio/#command-tools) |
+| **Target: iOS**     | ⚠️: [Docker-OSX (inside WSL with Docker)](https://github.com/sickcodes/Docker-OSX) or [OSX-KVM (inside WSL or VM)](https://github.com/kholia/OSX-KVM) or [macOS-VirtualBox (inside/with WSL and/or MSYS2/MinGW)](https://github.com/myspaghetti/macos-virtualbox) | ⚠️: [Docker-OSX](https://github.com/sickcodes/Docker-OSX) or [OSX-KVM](https://github.com/kholia/OSX-KVM) or [macOS-VirtualBox](https://github.com/myspaghetti/macos-virtualbox) | ✅: [XCode](https://developer.apple.com/xcode/)                                                                                                 |
 
 ✅ = Natively supported.
 🔀 = Cross-Compilation & Toolchain needed.
@@ -159,12 +160,12 @@ This is done to save on build costs/minutes.
 
 ### CI Platform: GitHub Actions
 
-[![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_android.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_android.yml)
-[![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_ios.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_ios.yml)
-[![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_linux.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_linux.yml)
-[![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_macos.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_macos.yml)
-[![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_windows.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_windows.yml)
-[![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/shared.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/shared.yml)
+[![Rust](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_android.yml/badge.svg)](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_android.yml)
+[![Rust](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_ios.yml/badge.svg)](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_ios.yml)
+[![Rust](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_linux.yml/badge.svg)](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_linux.yml)
+[![Rust](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_macos.yml/badge.svg)](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_macos.yml)
+[![Rust](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_windows.yml/badge.svg)](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/platform_windows.yml)
+[![Rust](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/shared.yml/badge.svg)](https://github.com/rust-multiplatform/Graphical-Engine-Template/actions/workflows/shared.yml)
 
 On GitHub Actions we have a workflow file per package (platforms & shared).
 Each hast their own badge.
@@ -184,13 +185,13 @@ In fact I do have private projects on there.
 
 On CircleCI we also support each package, but we only have one badge for the whole pipeline.
 
-[![CircleCI](https://circleci.com/gh/rust-multiplatform/Base-Project-Template/tree/main.svg?style=svg)](https://circleci.com/gh/rust-multiplatform/Base-Project-Template/tree/main)
+[![CircleCI](https://circleci.com/gh/rust-multiplatform/Graphical-Engine-Template/tree/main.svg?style=svg)](https://circleci.com/gh/rust-multiplatform/Graphical-Engine-Template/tree/main)
 
 > Note that a failure here can also mean we run out of credits. Happens too often unfortunately!
 
 ### CI Platform: Travis
 
-[![Build Status](https://app.travis-ci.com/rust-multiplatform/Base-Project-Template.svg?branch=main)](https://app.travis-ci.com/rust-multiplatform/Base-Project-Template)
+[![Build Status](https://app.travis-ci.com/rust-multiplatform/Graphical-Engine-Template.svg?branch=main)](https://app.travis-ci.com/rust-multiplatform/Graphical-Engine-Template)
 
 On Travis we only build for Windows, macOS and Linux.
 Android and iOS _would_ be possible, however it requires a lot more work.
@@ -206,20 +207,20 @@ To use GitLab CI we mirror our repository from GitHub to GitLab.
 
 Currently, we are only building `platform_linux`. Other platforms should be possible.
 
-[![pipeline status](https://gitlab.com/rust-multiplatform/base-project-template/badges/main/pipeline.svg)](https://gitlab.com/rust-multiplatform/base-project-template/-/commits/main)
+[![pipeline status](https://gitlab.com/rust-multiplatform/graphical-engine-template/badges/main/pipeline.svg)](https://gitlab.com/rust-multiplatform/graphical-engine-template/-/commits/main)
 
 ### CI Platform: BitBucket Pipeline
 
 Unfortunately, BitBucket Pipelines don't have status badges.
 
-The pipelines are available at: [BitBucket Mirror](https://bitbucket.org/rust-multiplatform/base-project-template/)
+The pipelines are available at: [BitBucket Mirror](https://bitbucket.org/rust-multiplatform/graphical-engine-template/)
 
 ### CI Platform: TeamCity
 
-| Pipeline | Status Badge                                                                                                                                                        |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Build    | ![TeamCity build status](https://teamcity.jetbrains.com/app/rest/builds/buildType:id:OpenSourceProjects_RustMultiplatform_BaseProjectTemplate_Build/statusIcon.svg) |
-| Test     | ![TeamCity test status](https://teamcity.jetbrains.com/app/rest/builds/buildType:id:OpenSourceProjects_RustMultiplatform_BaseProjectTemplate_Test/statusIcon.svg)   |
+| Pipeline | Status Badge                                                                                                                                                          |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Build    | ![TeamCity build status](https://teamcity.jetbrains.com/app/rest/builds/buildType:id:OpenSourceProjects_RustMultiplatform_ComputeEngineTemplate_Build/statusIcon.svg) |
+| Test     | ![TeamCity test status](https://teamcity.jetbrains.com/app/rest/builds/buildType:id:OpenSourceProjects_RustMultiplatform_ComputeEngineTemplate_Test/statusIcon.svg)   |
 
 To use [TeamCity](https://www.jetbrains.com/teamcity/) you either have to host your own Server, subscribe for a hosted (TeamCity Cloud) server or apply for your [OSS project being added for free](https://blog.jetbrains.com/teamcity/2016/10/hosted-teamcity-for-open-source-a-new-home/).
 
@@ -234,14 +235,14 @@ Windows builds would also be much easier if we'd have an agent for it.
 
 ### CI Platform: AppVeyor
 
-[![Build status](https://ci.appveyor.com/api/projects/status/nsffumoc868yqsrj/branch/main?svg=true)](https://ci.appveyor.com/project/Sakul6499/base-project-template/branch/main)
+[![Build status](https://ci.appveyor.com/api/projects/status/nsffumoc868yqsrj/branch/main?svg=true)](https://ci.appveyor.com/project/Sakul6499/graphical-engine-template/branch/main)
 
 Simple pipeline to showcase the usage of Rust on AppVeyor.  
 Linux only currently, but [Windows](https://www.appveyor.com/docs/windows-images-software/) and [macOS](https://www.appveyor.com/docs/macos-images-software/) are possible.
 
 ### CI Platform: Jenkins
 
-[![Build Status](https://jenkins.sakul-flee.de/buildStatus/icon?job=github_rust_multiplatform%2FBase-Project-Template%2Fmain)](https://jenkins.sakul-flee.de/job/github_rust_multiplatform/job/Base-Project-Template/job/main/)
+[![Build Status](https://jenkins.sakul-flee.de/buildStatus/icon?job=github_rust_multiplatform%2FGraphical-Engine-Template%2Fmain)](https://jenkins.sakul-flee.de/job/github_rust_multiplatform/job/Graphical-Engine-Template/job/main/)
 
 [Jenkins](https://www.jenkins.io/) is another multi-purpose self-hosted CI platform.
 
@@ -253,21 +254,21 @@ The configuration file can be found under `.jenkins/Jenkinsfile` and includes bo
 A combination of [grcov](https://github.com/mozilla/grcov) and [codecov.io](https://codecov.io) is used to provide code-to-test coverage.  
 **Please note that it is impossible to reach 100% coverage on some platforms as e.g. bindgen-code (i.e. dynamically generated code / macros) is NOT covered by `grcov` and certain platform specific tools (like `cargo-apk`) generate additional code that also is NOT included in the coverage.**
 
-Test-to-Code coverage status: [![codecov](https://codecov.io/gh/rust-multiplatform/Base-Project-Template/branch/main/graph/badge.svg?token=XpGvuQVirP)](https://codecov.io/gh/rust-multiplatform/Base-Project-Template)
+Test-to-Code coverage status: [![codecov](https://codecov.io/gh/rust-multiplatform/Graphical-Engine-Template/branch/main/graph/badge.svg?token=XpGvuQVirP)](https://codecov.io/gh/rust-multiplatform/Graphical-Engine-Template)
 
 Below are several charts showing/highlighting the distribution of **all platforms**.
 
 ### Sunburst
 
-![Sunburst](https://codecov.io/gh/rust-multiplatform/Base-Project-Template/branch/main/graphs/sunburst.svg?token=XpGvuQVirP)
+![Sunburst](https://codecov.io/gh/rust-multiplatform/Graphical-Engine-Template/branch/main/graphs/sunburst.svg?token=XpGvuQVirP)
 
 ### Grid
 
-![Grid](https://codecov.io/gh/rust-multiplatform/Base-Project-Template/branch/main/graphs/tree.svg?token=XpGvuQVirP)
+![Grid](https://codecov.io/gh/rust-multiplatform/Graphical-Engine-Template/branch/main/graphs/tree.svg?token=XpGvuQVirP)
 
 ### Icicle
 
-![Icicle](https://codecov.io/gh/rust-multiplatform/Base-Project-Template/branch/main/graphs/icicle.svg?token=XpGvuQVirP)
+![Icicle](https://codecov.io/gh/rust-multiplatform/Graphical-Engine-Template/branch/main/graphs/icicle.svg?token=XpGvuQVirP)
 
 ## Contributing & Getting Help
 

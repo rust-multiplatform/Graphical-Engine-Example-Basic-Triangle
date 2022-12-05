@@ -14,3 +14,9 @@ all-tests = ["ui-tests"]
 crate-type = ["cdylib", "staticlib", "rlib"]
 
 [dependencies]
+graphical_engine = { path = "./Graphical-Engine-Library/" }
+log = "0.4.14"
+env_logger = "0.10.0"
+winit = "0.27.0"
+vulkano = "0.31.0"
+vulkano-win = "0.31.0"

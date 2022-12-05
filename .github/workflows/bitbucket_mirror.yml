@@ -2,7 +2,7 @@ name: BitBucket Mirror
 
 on:
   push:
-    branches: [ "**" ]
+    branches: ["**"]
 
 jobs:
   bitbucket_mirror:

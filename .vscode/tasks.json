@@ -72,15 +72,6 @@
             "group": "build"
         },
         {
-            "label": "Check Platform WebAssembly (Debug)",
-            "type": "shell",
-            "command": "wasm-pack check --package platform_webassembly",
-            "dependsOn": [
-                "General Notice"
-            ],
-            "group": "build"
-        },
-        {
             "label": "Check Shared library (Release)",
             "type": "shell",
             "command": "cargo check --release --package shared",
@@ -129,15 +120,6 @@
             "label": "Check Platform Android (Release)",
             "type": "shell",
             "command": "cargo apk check --release --package platform_android",
-            "dependsOn": [
-                "General Notice"
-            ],
-            "group": "build"
-        },
-        {
-            "label": "Check Platform WebAssembly (Release)",
-            "type": "shell",
-            "command": "wasm-pack check --release --package platform_webassembly",
             "dependsOn": [
                 "General Notice"
             ],
@@ -198,15 +180,6 @@
             "group": "build"
         },
         {
-            "label": "Build Platform WebAssembly (Debug)",
-            "type": "shell",
-            "command": "wasm-pack build --package platform_webassembly",
-            "dependsOn": [
-                "General Notice"
-            ],
-            "group": "build"
-        },
-        {
             "label": "Build Shared library (Release)",
             "type": "shell",
             "command": "cargo build --release --package shared",
@@ -255,15 +228,6 @@
             "label": "Build Platform Android (Release)",
             "type": "shell",
             "command": "cargo apk build --release --package platform_android",
-            "dependsOn": [
-                "General Notice"
-            ],
-            "group": "build"
-        },
-        {
-            "label": "Build Platform WebAssembly (Release)",
-            "type": "shell",
-            "command": "wasm-pack build --release --package platform_webassembly",
             "dependsOn": [
                 "General Notice"
             ],
@@ -324,15 +288,6 @@
             "group": "test"
         },
         {
-            "label": "Test Platform WebAssembly (Debug)",
-            "type": "shell",
-            "command": "wasm-pack test --package platform_webassembly --node",
-            "dependsOn": [
-                "General Notice"
-            ],
-            "group": "test"
-        },
-        {
             "label": "Test Shared library (Release)",
             "type": "shell",
             "command": "cargo test --release --package shared",
@@ -381,15 +336,6 @@
             "label": "Test Platform Android (Release)",
             "type": "shell",
             "command": "cargo apk test --release --package platform_android",
-            "dependsOn": [
-                "General Notice"
-            ],
-            "group": "test"
-        },
-        {
-            "label": "Test Platform WebAssembly (Release)",
-            "type": "shell",
-            "command": "wasm-pack test --release --package platform_webassembly --node",
             "dependsOn": [
                 "General Notice"
             ],
