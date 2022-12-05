@@ -32,9 +32,6 @@ jobs:
       - name: Install Rust
         run: Invoke-WebRequest https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe -OutFile rustup-init.exe; ./rustup-init.exe --default-toolchain stable --profile minimal -y
 
-      - name: Install Ninja
-        run: choco install ninja
-
       - name: Install target ${{ matrix.target }}
         run: rustup target add ${{ matrix.target }}
 
