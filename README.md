@@ -1,7 +1,5 @@
 # Rust Multi-Platform: Graphical Project Template
 
-> ⚠️ THIS IS A TEMPLATE. ⚠️
-
 This project is supported by the following platforms:
 
 - ✅ Platform: Windows
